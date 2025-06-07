@@ -23,7 +23,12 @@ main_mod.cyclical_encode = cyclical_encode
 main_mod.doy_feature_names_out = doy_feature_names_out
 sys.modules["__main__"] = main_mod
 
-model = joblib.load("water_predictor_model_v3.pkl")
+try:
+    model = joblib.load("water_predictor_model_v3.pkl")
+except (AttributeError, ImportError) as e:
+    print(f"Error loading model: {e}")
+    print("Please ensure scikit-learn version matches the model version (1.6.1)")
+    sys.exit(1)
 
 # ─────── KC table stays the same ────────────────────────────────────────────
 kc_table = {
