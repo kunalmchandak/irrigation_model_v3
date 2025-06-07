@@ -4,6 +4,7 @@ gunicorn
 pandas
 requests
 joblib
+scikit-learn
 python-multipart
 datetime
 numpy
